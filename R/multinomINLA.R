@@ -3,8 +3,11 @@
 # I can do the same with the single observations!
 # I need to augment the dataset with one additional observation per group
 # And use a convenient offset
+# TODO: make it work with additional covariates and models
 
-
+#' Ordered and unordered multinomial Regression
+#' 
+#' @references Andrew Gelman and Jennifer Hill \emph{Data Analysis Using Regression and Multilevel/Hierarchical Models} Cambridge University Press (2006)
 multinomINLA <- function(formula, data, ...) {
   mf <- model.frame(formula, data)
   mt <- attr(mf, 'terms')
@@ -16,6 +19,10 @@ multinomINLA <- function(formula, data, ...) {
   if(method == 'counts') {
     # introduce new parameters for each group
     dat <- cbind(data, phi = 1)
+    
+    ## To be implemented ...
+    stop('Working with counts is not implemented yet...')
+    
   } else {
     # Augment the data
     n = nrow(data)

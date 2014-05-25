@@ -61,3 +61,8 @@ plot(res.inla$marginals.multinomial[[1]], type = 'l', xlim = c(0,1))
 lines(res.inla$marginals.multinomial[[2]])
 lines(res.inla$marginals.multinomial[[3]])
 abline(v = p, col = 'red')
+
+
+###
+# although it will understand counts as well
+res.inla.counts <- multinomINLA(Freq ~ obs, data = dat2)
